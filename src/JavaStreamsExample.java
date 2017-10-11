@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -10,28 +9,28 @@ import java.util.stream.Collectors;
  */
 public class JavaStreamsExample
 {
-    List<Director> directors = null;
-    Map<String, List<Movie>> direcotrMoviesMap = null;
+    private List<Director> directors = null;
+    private Map<String, List<Movie>> directorMoviesMap = null;
+
     private void init()
     {
         Director[] dirArray = new Director[]{
                 new Director("Spielberg",
-                        Arrays.asList(new Movie[]{new Movie("Jurassic Park", true),
-                                new Movie("Terminal", false)})),
+                        Arrays.asList(new Movie("Jurassic Park", true), new Movie("Terminal", false))),
 
                 new Director("Cameroon",
-                        Arrays.asList(new Movie[]{new Movie("Avatar", false),
-                                new Movie("Terminator", true)})),
+                        Arrays.asList(new Movie("Avatar", false), new Movie("Terminator", true))),
 
                 new Director("Woody Allen",
-                        Arrays.asList(new Movie[]{new Movie("Midnight in Paris", false),
-                                new Movie("Annie Hall", false)})),
+                        Arrays.asList(
+                                new Movie("Midnight in Paris", false),
+                                new Movie("Annie Hall", false))),
 
                 new Director("Newbie", null)
         };
 
         directors = Arrays.asList(dirArray);
-        direcotrMoviesMap = directors.stream()
+        directorMoviesMap = directors.stream()
                                 .filter(d -> d.getMovies()!=null)
                                 .collect(Collectors.toMap(Director::getName, Director::getMovies));
     }
