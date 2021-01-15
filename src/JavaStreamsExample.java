@@ -30,6 +30,7 @@ public class JavaStreamsExample
         };
 
         directors = Arrays.asList(dirArray);
+        System.out.println("Input : "+ directors);
         directorMoviesMap = directors.stream()
                                 .filter(d -> d.getMovies()!=null)
                                 .collect(Collectors.toMap(Director::getName, Director::getMovies));
